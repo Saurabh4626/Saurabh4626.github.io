@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>nife</title>
+    <title>Bootstrap4 Landing Page</title>
     <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- NAVIGATION -->
@@ -48,7 +49,7 @@
               <h1>
                 Easiest Deployment.Fastest Performance.Best Pricing.
               </h1>
-              <p>Deploy serverless code instantly across thgbe to give it exceptional performance,reliability and scale</p>
+              <p>Deploy serverless code instantly across the globe to give it exceptional performance,reliability and scale</p>
               <a href="#" class="btn btn-outline-primary btn-lg text-white">
                 Read More
               </a>
@@ -146,46 +147,76 @@
         <div class="row">
           <div class="col-lg-9">
             <h3>Contact Us</h3>
-            <form action="">
+            <form action="backend.php" id="form" method="post">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-user input-group-text"></i>
                 </div>
-                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-envelope input-group-text"></i>
                 </div>
-                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="Email" class="form-control" name="Email" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-book input-group-text"></i>
                 </div>
-                <input type="text" class="form-control" placeholder="Company" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" id="Company" name="Company" placeholder="Company" aria-label="Username" aria-describedby="basic-addon1">
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-pencil-alt input-group-text"></i>
                 </div>
-                <textarea name="" cols="2" rows="2" placeholder="Use Case for which you want to use NIFE?" class="form-control"></textarea>
+                <textarea id="Case_for_usingnife" name="Case_for_usingnife" cols="2" rows="2" placeholder="Which usecase do you want implement on NIFE?" class="form-control"></textarea>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-pencil-alt input-group-text"></i>
                 </div>
-                <textarea name="" cols="2" rows="2" placeholder="What are you using currently for your use case?" class="form-control"></textarea>
+                <textarea name="" cols="2" rows="2" id="use_case_current" name="use_case_current" placeholder="What are you using currently for your use case?" class="form-control"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Send</button>
+              <button type="submit" id="#submit_btn" class="btn btn-primary btn-block">Send</button>
+              <div id="result"></div>
             </form>
+            <script> 
+            /* attach a submit handler to the form */
+$("#form").submit(function(event) {
+
+  /* stop form from submitting normally */
+  event.preventDefault();
+
+  /* get the action attribute from the <form action=""> element */
+  var $form = $(this),
+    url = $form.attr('action');
+
+  /* Send the data using post with element id name and name2*/
+  var posting = $.post(url, {
+    Name: $('#Name').val(),
+    Email: $('#Email').val(),
+    Company: $('#Company').val(),
+    Case_for_usingnife: $('#Case_for_usingnife').val(),
+    use_case_current: $('#use_case_current').val(),
+    
+  });
+
+  /* Alerts the results */
+  posting.done(function(data) {
+    $('#result').text('success');
+  });
+  posting.fail(function() {
+    $('#result').text('failed');
+  });
+});
+    </script>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </body>
