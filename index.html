@@ -147,7 +147,10 @@
         <div class="row">
           <div class="col-lg-9">
             <h3>Contact Us</h3>
-            <form action="backend.php" id="form" method="post">
+            
+            <form
+  action="https://formspree.io/f/xleodyoa"
+  method="POST">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <i class="fas fa-user input-group-text"></i>
@@ -181,9 +184,9 @@
               <button type="submit" id="#submit_btn" class="btn btn-primary btn-block">Send</button>
               <div id="result"></div>
             </form>
-            <script> 
+           <!-- <script> 
             /* attach a submit handler to the form */
-$("#form").submit(function(event) {
+ $("#form").submit(function(event) {
 
   /* stop form from submitting normally */
   event.preventDefault();
@@ -210,7 +213,7 @@ $("#form").submit(function(event) {
     $('#result').text('failed');
   });
 });
-    </script>
+    </script> -->
           </div>
         </div>
       </div>
